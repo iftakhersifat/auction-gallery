@@ -20,7 +20,7 @@ function App() {
         <li><a>How to works</a></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl text-[#003EA4] gap-0">Auction<span className="text-[#FFD337] font-[800]">Gallery</span></a>
+    <h1 className="btn btn-ghost text-xl text-[#003EA4] gap-0">Auction<span className="text-[#FFD337] font-[800]">Gallery</span></h1>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -62,6 +62,27 @@ function App() {
     </div>
   </div>
 </div>
+
+
+
+{/* footer section */}
+<footer className="footer footer-horizontal footer-center bg-white p-10">
+  <div>
+  <h1 className="btn btn-ghost text-xl text-[#003EA4] gap-0">Auction<span className="text-[#FFD337] font-[800]">Gallery</span></h1>
+    <ul className='flex space-x-4'>
+      <p>Bid.</p>
+      <p>Win.</p>
+      <p>Own.</p>
+    </ul>
+    <ul className='flex space-x-4'>
+        <li><a>Home</a></li>
+        <li><a>Auctions</a></li>
+        <li><a>Categories</a></li>
+        <li><a>How to works</a></li>
+    </ul>
+    <p>© 2025 AuctionHub. All rights reserved.</p>
+  </div>
+</footer>
 
 
 
