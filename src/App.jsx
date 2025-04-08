@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar bg-base-100 shadow-sm lg:px-12">
     <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -20,7 +20,7 @@ function App() {
         <li><a>How to works</a></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl text-[#003EA4] gap-0">Auction<span className="text-[#FFD337]">Gallery</span></a>
+    <a className="btn btn-ghost text-xl text-[#003EA4] gap-0">Auction<span className="text-[#FFD337] font-[800]">Gallery</span></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -47,6 +47,24 @@ function App() {
 </div>
   </div>
 </div>
+
+{/* banner section */}
+<div class="relative lg:h-[500px] md:h-[300px] h-[300px] w-full">
+  <div class="absolute inset-0">
+    <img src="../assets/Banner-min.jpg" alt="" class="w-full h-full object-cover" />
+  </div>
+
+  <div class="relative z-10 flex items-center h-full px-6 md:px-16">
+    <div class="text-white max-w-xl">
+      <h1 class="text-3xl md:text-5xl font-semibold mb-4">Bid on Unique Items from <br />Around the World</h1>
+      <p class="text-sm md:text-base mb-6">Discover rare collectibles, luxury goods, and vintage treasures in our curated auctions.</p>
+      <button class="bg-white text-black font-medium px-5 py-2 rounded-full hover:bg-gray-200">Explore Auctions</button>
+    </div>
+  </div>
+</div>
+
+
+
     </>
   )
 }
