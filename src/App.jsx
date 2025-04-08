@@ -1,7 +1,11 @@
+import { Suspense } from 'react'
 import './App.css'
+import Bids from './Components/Bids/Bids'
 
 
 function App() {
+  const bidsFetch =fetch("bid-items.json")
+  .then(res=>res.json())
 
   return (
     <>
@@ -49,19 +53,24 @@ function App() {
 </div>
 
 {/* banner section */}
-<div class="relative lg:h-[500px] md:h-[300px] h-[300px] w-full">
-  <div class="absolute inset-0">
-    <img src="../assets/Banner-min.jpg" alt="" class="w-full h-full object-cover" />
+<div className="relative lg:h-[500px] md:h-[300px] h-[300px] w-full">
+  <div className="absolute inset-0">
+    <img src="../assets/Banner-min.jpg" alt="" className="w-full h-full object-cover" />
   </div>
 
-  <div class="relative z-10 flex items-center h-full px-6 md:px-16">
-    <div class="text-white max-w-xl">
-      <h1 class="text-3xl md:text-5xl font-semibold mb-4">Bid on Unique Items from <br />Around the World</h1>
-      <p class="text-sm md:text-base mb-6">Discover rare collectibles, luxury goods, and vintage treasures in our curated auctions.</p>
-      <button class="bg-white text-black font-medium px-5 py-2 rounded-full hover:bg-gray-200">Explore Auctions</button>
+  <div className="relative z-10 flex items-center h-full px-6 md:px-16">
+    <div className="text-white max-w-xl">
+      <h1 className="text-3xl md:text-5xl font-semibold mb-4">Bid on Unique Items from <br />Around the World</h1>
+      <p className="text-sm md:text-base mb-6">Discover rare collectibles, luxury goods, and vintage treasures in our curated auctions.</p>
+      <button className="bg-white text-black font-medium px-5 py-2 rounded-full hover:bg-gray-200">Explore Auctions</button>
     </div>
   </div>
 </div>
+
+
+<Suspense fallback={<p>loading...</p>}>
+  <Bids bidsFetch={bidsFetch}></Bids>
+</Suspense>
 
 
 
