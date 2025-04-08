@@ -10,7 +10,15 @@ const Bids = ({bidsFetch}) => {
             <p className='mb-8'>Discover and bid on extraordinary items</p>
 
         <div className='flex'>
-            <div className="left w-[70%]">
+            <div className="left w-[70%] bg-[#FFFFFF] rounded-xl p-6 mb-[116px]">
+
+            <div className='flex justify-between items-center space-y-4'>
+                <h1>Items</h1>
+                <h1>Current Bid</h1>
+                <h1>Time Left</h1>
+                <h1>Bid Now</h1>
+            </div>
+
                 <div className=''>
                 {
                     bidsUse.map(bid=><Bid key={bid.id} bid={bid}></Bid>)
