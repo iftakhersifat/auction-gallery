@@ -1,7 +1,10 @@
 import React from 'react';
+import { IoIosHeartEmpty } from "react-icons/io";
 
 const Bid = ({bid}) => {
-    const {image, currentBidPrice, timeLeft, bidsCount, title}=bid;
+    const {image, currentBidPrice, timeLeft, title}=bid;
+
+
     return (
         <div className='flex justify-between items-center space-y-4 text-[#0E2954] py-4 border-b border-[#E3EAF3] last:border-b-0'>
             
@@ -11,7 +14,7 @@ const Bid = ({bid}) => {
        </div>
             <p className='text-center'>{currentBidPrice}</p>
             <p className='text-center'>{timeLeft}</p>
-            <p className='text-center mr-6'>{bidsCount}</p>
+            <button className='text-center mr-6'><IoIosHeartEmpty size={25}/></button>
         </div>
       
     );

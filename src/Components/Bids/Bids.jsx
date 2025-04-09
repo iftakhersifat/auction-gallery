@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import Bid from '../Bid/Bid';
+import { IoIosHeartEmpty } from "react-icons/io";
 
 const Bids = ({bidsFetch}) => {
     const bidsUse =use(bidsFetch);
@@ -29,7 +30,9 @@ const Bids = ({bidsFetch}) => {
             {/* favorite items section */}
             <div className="right w-[30%] bg-[#FFFFFF] py-4 rounded-xl h-[320px] text-center ">
 
-            <h1 className="text-[#0E2954] text-lg font-semibold p-2 border-b border-[#E3EAF3]">Favorite Items</h1>
+            <h1 className="text-[#0E2954] text-lg font-semibold p-2 border-b border-[#E3EAF3] flex items-center justify-center gap-2">
+            <IoIosHeartEmpty size={25} />Favorite Items</h1>
+
             <div className='py-2 space-y-3'>
             <p className="text-lg font-semibold mt-10">No favorites yet</p>
             <p className="text-lg font-semibold text-gray-500 mb-10">Click the heart icon on any item <br /> to add it to your favorites</p>
