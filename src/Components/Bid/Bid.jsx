@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IoIosHeartEmpty,IoIosHeart } from "react-icons/io";
 
-const Bid = ({bid}) => {
+const Bid = ({bid, addFavorite}) => {
     const {image, currentBidPrice, timeLeft, title}=bid;
 
     const [heart, setHeart]=useState(false);
@@ -10,6 +10,7 @@ const Bid = ({bid}) => {
             setHeart(false)
         }
         else{setHeart(true)}
+        addFavorite(bid)
     }
 
     return (
@@ -21,7 +22,7 @@ const Bid = ({bid}) => {
        </div>
             <p className='text-center'>{currentBidPrice}</p>
             <p className='text-center'>{timeLeft}</p>
-            import { IoIosHeart } from "react-icons/io";
+            
 
             <button onClick={handelHeart} className="mr-6">{heart ? (<IoIosHeart size={25} className="text-red-500" />) : (<IoIosHeartEmpty size={25} className="text-black" />)}
             </button>
