@@ -14,21 +14,21 @@ const Bid = ({bid, addFavorite}) => {
     }
 
     return (
-        <div className='flex justify-between items-center space-y-4 text-[#0E2954] py-4 border-b border-[#E3EAF3] last:border-b-0'>
-            
-            <div className="flex space-x-4">
-         <img className="w-[64px] h-[64px]" src={image} />
-        <p className="text-sm w-[240px] ml-4">{title}</p>
-       </div>
-            <p className='text-center'>{currentBidPrice}</p>
-            <p className='text-center'>{timeLeft}</p>
-            
-
-            <button onClick={handelHeart} className="mr-6">{heart ? (<IoIosHeart size={25} className="text-red-500" />) : (<IoIosHeartEmpty size={25} className="text-black" />)}
+        <tr className="text-[#0E2954] border-2 border-black">
+        <td className="py-4 px-4">
+            <div className="flex items-center space-x-4">
+                <img className="w-[64px] h-[64px]" src={image}  />
+                <p className="text-sm">{title}</p>
+            </div>
+        </td>
+        <td className="py-4 px-4 text-center">{currentBidPrice}</td>
+        <td className="py-4 px-4 text-center">{timeLeft}</td>
+        <td className="py-4 px-4 text-center">
+            <button onClick={handelHeart} className="">
+                {heart ? (<IoIosHeart size={25} className="text-red-500" />) : (<IoIosHeartEmpty size={25} className="text-black" />)}
             </button>
-
-            
-        </div>
+        </td>
+    </tr>
       
     );
 };
