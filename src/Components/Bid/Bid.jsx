@@ -10,7 +10,7 @@ const Bid = ({bid, addFavorite}) => {
             setHeart(false)
         }
         else{setHeart(true)}
-        addFavorite(bid)
+        addFavorite(bid);
     }
 
     return (

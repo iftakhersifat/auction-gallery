@@ -9,6 +9,8 @@ const Bids = ({bidsFetch}) => {
     // calculation
     const [totalPrice, setTotalPrice] = useState(0);
     const [favorites, setFavorites] = useState([]);
+
+    
     const addFavorite = (bid) => {
         setFavorites([...favorites, bid]);
         setTotalPrice(totalPrice + bid.currentBidPrice);
@@ -19,6 +21,8 @@ const Bids = ({bidsFetch}) => {
         setTotalPrice(prevTotal => prevTotal - price);
         toast.info(`${title} removed from favorites.`);
     };
+
+
     return (
         <div className='px-15 py-15 bg-[#EBF0F5]'>
             <h1 className='text-[#0E2954] text-3xl mb-2'>Active Auction</h1>
@@ -71,7 +75,7 @@ const Bids = ({bidsFetch}) => {
                                         </div>
                                         <div className="text-center">{favorite.currentBidPrice}</div>
                                         <div className="text-center">{favorite.bidsCount} bids</div>
-                                        <button onClick={() => removeFavorite(favorite.title)} className="text-red-500 font-bold mb-5 text-2xl">x</button>
+                                        <button onClick={() => removeFavorite(favorite.title, favorite.currentBidPrice)} className="text-red-500 font-bold mb-5 text-2xl">x</button>
                                     </div>
                                 ))}
                             </div>
@@ -79,9 +83,10 @@ const Bids = ({bidsFetch}) => {
                     </div>
 
                     <div className="border-t-2 border-black pt-4 font-semibold flex justify-around">
-                        <p className="text-lg font-semibold">Total bids Amount</p>
-                        <p className="text-2xl mt-1">${totalPrice}</p>
-                    </div>
+  <p className="text-lg font-semibold">Total bids Amount</p>
+  <p className="text-2xl mt-1">${totalPrice}</p>
+</div>
+
             </div>
 
         </div>    
