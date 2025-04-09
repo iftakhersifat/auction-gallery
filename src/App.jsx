@@ -1,6 +1,9 @@
 import { Suspense } from 'react'
 import './App.css'
 import Bids from './Components/Bids/Bids'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
@@ -70,6 +73,7 @@ function App() {
 
 <Suspense fallback={<p>loading...</p>}>
   <Bids bidsFetch={bidsFetch}></Bids>
+  <ToastContainer />
 </Suspense>
 
 

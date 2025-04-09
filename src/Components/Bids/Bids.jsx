@@ -1,17 +1,23 @@
 import React, { use, useState } from 'react';
 import Bid from '../Bid/Bid';
 import { IoIosHeartEmpty } from "react-icons/io";
+import { toast } from 'react-toastify'; // Import toast
 
 const Bids = ({bidsFetch}) => {
     const bidsUse =use(bidsFetch);
     console.log(bidsUse);
-
+    // calculation
+    const [totalPrice, setTotalPrice] = useState(0);
     const [favorites, setFavorites] = useState([]);
     const addFavorite = (bid) => {
         setFavorites([...favorites, bid]);
+        setTotalPrice(totalPrice + bid.currentBidPrice);
+        toast.success(`${bid.title} added to favorites!`);
     };
-    const removeFavorite = (title) => {
+    const removeFavorite = (title, price) => {
         setFavorites(favorites.filter(item => item.title !== title));
+        setTotalPrice(prevTotal => prevTotal - price);
+        toast.info(`${title} removed from favorites.`);
     };
     return (
         <div className='px-15 py-15 bg-[#EBF0F5]'>
@@ -66,7 +72,7 @@ const Bids = ({bidsFetch}) => {
 
                     <div className="border-t border-[#E3EAF3] pt-4 font-semibold flex justify-around">
                         <p className="text-lg font-semibold">Total bids Amount</p>
-                        <p className="text-2xl mt-1">$0000</p>
+                        <p className="text-2xl mt-1">${totalPrice}</p>
                     </div>
             </div>
 
