@@ -6,22 +6,36 @@ import { toast } from 'react-toastify'; // Import toast
 const Bids = ({bidsFetch}) => {
     const bidsUse =use(bidsFetch);
     console.log(bidsUse);
-    // calculation
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [favorites, setFavorites] = useState([]);
-
     
-    const addFavorite = (bid) => {
-        setFavorites([...favorites, bid]);
-        setTotalPrice(totalPrice + bid.currentBidPrice);
-        toast.success(`${bid.title} added to favorites!`);
-    };
-    const removeFavorite = (title, price) => {
-        setFavorites(favorites.filter(item => item.title !== title));
-        setTotalPrice(prevTotal => prevTotal - price);
-        toast.info(`${title} removed from favorites.`);
+    
+    const [favorites, setFavorites] = useState([]);
+    const [totalBidAmount, setTotalBidAmount] = useState(0);
+
+    // Safely parse string/number bid price
+    const parsePrice = (price) => {
+        if (typeof price === 'string') {
+            return parseFloat(price.replace(/[^0-9.]/g, '')) || 0;
+        }
+        return price || 0;
     };
 
+    const addFavorite = (bid) => {
+        const alreadyAdded = favorites.find(item => item.id === bid.id);
+        if (!alreadyAdded) {
+            setFavorites([...favorites, bid]);
+            setTotalBidAmount(prev => prev + parsePrice(bid.currentBidPrice));
+            toast.success(`${bid.title} added to favorites!`);
+        }
+    };
+
+    const removeFavorite = (title) => {
+        const itemToRemove = favorites.find(item => item.title === title);
+        if (itemToRemove) {
+            setFavorites(favorites.filter(item => item.title !== title));
+            setTotalBidAmount(prev => prev - parsePrice(itemToRemove.currentBidPrice));
+            toast.info(`${title} removed from favorites.`);
+        }
+    };
 
     return (
         <div className='px-15 py-15 bg-[#EBF0F5]'>
@@ -75,7 +89,7 @@ const Bids = ({bidsFetch}) => {
                                         </div>
                                         <div className="text-center">{favorite.currentBidPrice}</div>
                                         <div className="text-center">{favorite.bidsCount} bids</div>
-                                        <button onClick={() => removeFavorite(favorite.title, favorite.currentBidPrice)} className="text-red-500 font-bold mb-5 text-2xl">x</button>
+                                        <button onClick={() => removeFavorite(favorite.title)} className="text-red-500 font-bold mb-5 text-2xl">x</button>
                                     </div>
                                 ))}
                             </div>
@@ -83,9 +97,9 @@ const Bids = ({bidsFetch}) => {
                     </div>
 
                     <div className="border-t-2 border-black pt-4 font-semibold flex justify-around">
-  <p className="text-lg font-semibold">Total bids Amount</p>
-  <p className="text-2xl mt-1">${totalPrice}</p>
-</div>
+                    <p className="text-lg font-semibold">Total bids Amount</p>
+                    <p className="text-2xl mt-1">${totalBidAmount.toFixed(2)}</p>
+                    </div>
 
             </div>
 
