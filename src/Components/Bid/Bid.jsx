@@ -24,7 +24,7 @@ const Bid = ({bid, addFavorite}) => {
         <td className="py-4 px-4 text-center">{currentBidPrice}</td>
         <td className="py-4 px-4 text-center">{timeLeft}</td>
         <td className="py-4 px-4 text-center">
-            <button onClick={handelHeart} className="">
+            <button onClick={handelHeart} disabled={heart} className={`${heart ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
                 {heart ? (<IoIosHeart size={25} className="text-red-500" />) : (<IoIosHeartEmpty size={25} className="text-black" />)}
             </button>
         </td>
